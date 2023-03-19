@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd-system
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd-system
+    server: 
+  project: default
+  source:
+    path: kubernetes/core/argocd-system
+    repoURL: 
+    targetRevision: 
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
